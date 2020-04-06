@@ -1,0 +1,89 @@
+{
+    "account_number": 1,
+    "ssn": "418-99-5984",
+    "first_name": "Margalo",
+    "last_name": "Trobey",
+    "email": "mtrobey0@cocolog-nifty.com",
+    "phone": "654-711-3196",
+    "beginning_balance": "$7680675.39",
+    "stock_trades": [
+        {
+            "type": "Sell",
+            "stock_symbol": "CTBB",
+            "count_shares": 7866,
+            "price_per_share": "$359.40"
+        },
+        {
+            "type": "Buy",
+            "stock_symbol": "CSTR",
+            "count_shares": 5912,
+            "price_per_share": "$307.45"
+        },
+        {
+            "type": "Buy",
+            "stock_symbol": "FLR",
+            "count_shares": 4710,
+            "price_per_share": "$159.27"
+        },
+        {
+            "type": "Buy",
+            "stock_symbol": "AGM^C",
+            "count_shares": 448,
+            "price_per_share": "$261.88"
+        },
+        {
+            "type": "Buy",
+            "stock_symbol": "CPTAL",
+            "count_shares": 4162,
+            "price_per_share": "$355.81"
+        },
+        {
+            "type": "Buy",
+            "stock_symbol": "NESRW",
+            "count_shares": 8907,
+            "price_per_share": "$82.42"
+        },
+        {
+            "type": "Buy",
+            "stock_symbol": "FCFP",
+            "count_shares": 6862,
+            "price_per_share": "$247.50"
+        },
+        {
+            "type": "Buy",
+            "stock_symbol": "LBTYA",
+            "count_shares": 6821,
+            "price_per_share": "$94.54"
+        },
+        {
+            "type": "Buy",
+            "stock_symbol": "AYX",
+            "count_shares": 1481,
+            "price_per_share": "$177.26"
+        },
+        {
+            "type": "Sell",
+            "stock_symbol": "DB",
+            "count_shares": 4837,
+            "price_per_share": "$258.29"
+        },
+        {
+            "type": "Sell",
+            "stock_symbol": "MTLS",
+            "count_shares": 2391,
+            "price_per_share": "$222.41"
+        },
+        {
+            "type": "Buy",
+            "stock_symbol": "DYSL",
+            "count_shares": 7395,
+            "price_per_share": "$107.63"
+        },
+        {
+            "type": "Buy",
+            "stock_symbol": "CUBI^C",
+            "count_shares": 2838,
+            "price_per_share": "$162.13"
+        }
+    ]
+}

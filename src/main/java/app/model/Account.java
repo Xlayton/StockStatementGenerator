@@ -3,13 +3,14 @@ package app.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.math3.util.Precision;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class Account {
 	private int accountNumber;
-	private float begginingBalance;
-	private float endingBalance;
+	private double begginingBalance;
+	private double endingBalance;
 	
 	private String ssn;
 	private String firstName;
@@ -21,7 +22,7 @@ public class Account {
 	
 	public Account(JSONObject rawData) {
 		this.accountNumber = ((Long) rawData.get("account_number")).intValue();
-		this.begginingBalance = Float.parseFloat(((String)rawData.get("beginning_balance")).substring(1));
+		this.begginingBalance = Double.parseDouble(((String)rawData.get("beginning_balance")).substring(1));
 		this.endingBalance = begginingBalance;
 		
 		this.ssn = (String) rawData.get("ssn");
@@ -47,17 +48,18 @@ public class Account {
 				throw new IllegalArgumentException("That isn't a trade type. Something went catastropically wrong.");
 			}
 		}
+		endingBalance = Precision.round(endingBalance, 2);
 	}
 
 	public int getAccountNumber() {
 		return accountNumber;
 	}
 
-	public float getBegginingBalance() {
+	public double getBegginingBalance() {
 		return begginingBalance;
 	}
 
-	public float getEndingBalance() {
+	public double getEndingBalance() {
 		return endingBalance;
 	}
 
@@ -87,7 +89,7 @@ public class Account {
 	
 	@Override
 	public String toString() {
-		return ""+ this.accountNumber + " " + this.firstName + " " + this.lastName + " " + this.email;
+		return ""+ this.accountNumber + " " + this.firstName + " " + this.lastName + " " + this.email + " " + this.phone;
 	}
 	
 }

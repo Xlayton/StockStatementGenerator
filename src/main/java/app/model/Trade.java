@@ -1,11 +1,12 @@
 package app.model;
 
+import org.apache.commons.math3.util.Precision;
 import org.json.simple.JSONObject;
 
 public class Trade {
 	private int shareCount;
-	private float pricePerShare;
-	private float tradeTotal;
+	private double pricePerShare;
+	private double tradeTotal;
 	
 	private String stockSymbol;
 	
@@ -13,8 +14,8 @@ public class Trade {
 	
 	public Trade(JSONObject rawData) {
 		this.shareCount = ((Long) rawData.get("count_shares")).intValue();
-		this.pricePerShare = Float.parseFloat(((String) rawData.get("price_per_share")).substring(1));
-		this.tradeTotal = pricePerShare * shareCount;
+		this.pricePerShare = Double.parseDouble(((String) rawData.get("price_per_share")).substring(1));
+		this.tradeTotal = Precision.round(pricePerShare * shareCount, 2);
 		
 		this.stockSymbol = (String) rawData.get("stock_symbol");
 		
@@ -25,11 +26,11 @@ public class Trade {
 		return shareCount;
 	}
 
-	public float getPricePerShare() {
+	public double getPricePerShare() {
 		return pricePerShare;
 	}
 
-	public float getTradeTotal() {
+	public double getTradeTotal() {
 		return tradeTotal;
 	}
 
@@ -43,7 +44,7 @@ public class Trade {
 	
 	@Override
 	public String toString() {
-		return "" + this.shareCount + " " + this.pricePerShare + " " + this.tradeTotal;
+		return "" + this.stockSymbol + " " + this.type + " " + this.shareCount + " " + this.pricePerShare;
 	}
 	
 	

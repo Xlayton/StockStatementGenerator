@@ -14,6 +14,9 @@ import app.model.Trade;
 class TradeTest {
 
 	@Test
+	/**
+	 * This test tests the information given by the JSON
+	 */
 	void should_create_single_trade() {
 		// arrange
 		JSONParser parser = new JSONParser();
@@ -25,12 +28,30 @@ class TradeTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		String expectedOutput = "7866 359.4 2827040.2";
+		String expectedOutput = "CTBB SELL 7866 359.4";
 		// act
 		String actualOutput = testTrade.toString();
 		// assert
-		System.out.println(actualOutput);
 		assertEquals(expectedOutput, actualOutput);
 	}
-
+	
+	@Test
+	void should_get_correct_total_amount() {
+		//arrange
+		JSONParser parser = new JSONParser();
+		ClassLoader classLoader = this.getClass().getClassLoader();
+		Trade testTrade = null;
+		try (Reader reader = new FileReader(classLoader.getResource("trade_test.json").getFile())) {
+			JSONObject parsedFile = (JSONObject) parser.parse(reader);
+			testTrade = new Trade(parsedFile);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		double expected = 2827040.4;
+		//act
+		double actual = testTrade.getTradeTotal();
+		//assert
+		System.out.println(actual);
+		assertEquals(expected, actual);
+	}
 }

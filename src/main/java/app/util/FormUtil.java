@@ -34,7 +34,7 @@ public class FormUtil {
 		cfg.setWrapUncheckedExceptions(true);
 		cfg.setFallbackOnNullLoopVariable(false);
 		for (Account account : accounts) {
-			String htmlContent = createHTMLString(account, saveDirectory);
+			String htmlContent = createHTMLString(account);
 			try(OutputStream os = new FileOutputStream(saveDirectory + "\\" + account.getAccountNumber() + ".pdf")) {
 				PdfRendererBuilder builder = new PdfRendererBuilder();
 				builder.useFastMode();
@@ -47,7 +47,7 @@ public class FormUtil {
 		}
 	}
 
-	private static String createHTMLString(Account account, String saveDirectory) throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException, TemplateException {
+	private static String createHTMLString(Account account) throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException, TemplateException {
 		Map<String, Object> stuff = new HashMap<String, Object>();
 		stuff.put("user", account);
 		Writer out = new CharArrayWriter();

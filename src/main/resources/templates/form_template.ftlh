@@ -57,8 +57,8 @@
         <tr>
             <th>Phone:</th>
             <td style="border-right:1px dashed #000">${user.phone}</td>
-            <th style="border-left: none;"></th>
-            <td></td>
+            <th style="border-left: none;">Stock Holdings:</th>
+            <td>$${user.stockHoldings}</td>
         </tr>
     </table>
     <h2>Transaction Details:</h2>

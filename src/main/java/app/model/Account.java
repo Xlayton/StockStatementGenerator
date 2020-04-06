@@ -11,6 +11,7 @@ public class Account {
 	private int accountNumber;
 	private double begginingBalance;
 	private double endingBalance;
+	private double stockHoldings;
 	
 	private String ssn;
 	private String firstName;
@@ -24,6 +25,7 @@ public class Account {
 		this.accountNumber = ((Long) rawData.get("account_number")).intValue();
 		this.begginingBalance = Double.parseDouble(((String)rawData.get("beginning_balance")).substring(1));
 		this.endingBalance = begginingBalance;
+		this.stockHoldings = 0;
 		
 		this.ssn = (String) rawData.get("ssn");
 		this.firstName = (String) rawData.get("first_name");
@@ -40,15 +42,21 @@ public class Account {
 			switch(t.getType()) {
 			case BUY:
 				this.endingBalance -= t.getTradeTotal();
+				this.stockHoldings += t.getTradeTotal();
 				break;
 			case SELL:
 				this.endingBalance += t.getTradeTotal();
+				this.stockHoldings -= t.getTradeTotal();
 				break;
 			default:
 				throw new IllegalArgumentException("That isn't a trade type. Something went catastropically wrong.");
 			}
 		}
-		endingBalance = Precision.round(endingBalance, 2);
+		if(this.stockHoldings < 0) {
+			this.stockHoldings = 0;
+		}
+		this.endingBalance = Precision.round(endingBalance, 2);
+		this.stockHoldings = Precision.round(stockHoldings, 2);
 	}
 
 	public int getAccountNumber() {
@@ -61,6 +69,10 @@ public class Account {
 
 	public double getEndingBalance() {
 		return endingBalance;
+	}
+	
+	public double getStockHoldings() {
+		return stockHoldings;
 	}
 
 	public String getSsn() {

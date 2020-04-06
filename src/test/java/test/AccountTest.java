@@ -15,7 +15,8 @@ class AccountTest {
 
 	@Test
 	/**
-	 * This test is used to check all the basic information of the user, the Trades should be checked using the Trade class tester.
+	 * This test is used to check all the basic information of the user, the Trades
+	 * should be checked using the Trade class tester.
 	 */
 	void should_create_single_account() {
 		// arrange
@@ -34,13 +35,13 @@ class AccountTest {
 		// assert
 		assertEquals(expectedOutput, actualOutput);
 	}
-	
+
 	@Test
 	/**
 	 * This test is essentially serving to only check the end balance of the user
 	 */
 	void should_get_correct_end_balance() {
-		//arrange
+		// arrange
 		JSONParser parser = new JSONParser();
 		ClassLoader classLoader = this.getClass().getClassLoader();
 		Account testAccount = null;
@@ -51,9 +52,31 @@ class AccountTest {
 			e.printStackTrace();
 		}
 		double expected = 3526949.14;
-		//act
+		// act
 		double actual = testAccount.getEndingBalance();
-		//assert
+		// assert
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	/**
+	 * This test checks for correct stock holdings balance
+	 */
+	void should_get_correct_stock_holdings() {
+		// arrange
+		JSONParser parser = new JSONParser();
+		ClassLoader classLoader = this.getClass().getClassLoader();
+		Account testAccount = null;
+		try (Reader reader = new FileReader(classLoader.getResource("single_test.json").getFile())) {
+			JSONObject parsedFile = (JSONObject) parser.parse(reader);
+			testAccount = new Account(parsedFile);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		double expected = 4153726.25;
+		// act
+		double actual = testAccount.getStockHoldings();
+		// assert
 		assertEquals(expected, actual);
 	}
 

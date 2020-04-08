@@ -49,7 +49,7 @@ public class Account {
 				this.stockHoldings -= t.getTradeTotal();
 				break;
 			default:
-				throw new IllegalArgumentException("That isn't a trade type. Something went catastropically wrong.");
+				throw new IllegalArgumentException("That isn't a trade type. Something went catastrophically wrong.");
 			}
 		}
 		if(this.stockHoldings < 0) {

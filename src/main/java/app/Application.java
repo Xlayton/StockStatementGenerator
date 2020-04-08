@@ -8,8 +8,8 @@ import app.util.LoadUtil;
 
 public class Application {
 	public static void main(String[] args) {
-		String fileOutPath = "C:\\Users\\KongF\\Desktop\\grading\\output";
-		String fileInPath = "C:\\Users\\KongF\\Desktop\\grading\\all_accounts.json";
+		String fileOutPath = "<INSERT OUTPUT FOLDER PATH>";
+		String fileInPath = "<INSERT INPUT JSON PATH>";
 		ArrayList<Account> accounts = LoadUtil.loadAccountsFromFilePath(fileInPath);
 		try {
 			FormUtil.createFormsFromAccounts(accounts, fileOutPath);
